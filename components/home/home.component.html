@@ -1,5 +1,67 @@
 <div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+  <div class="col-md-12">
+
+
+    <div class="card-header">
+      <div class="row top-space">
+        <div class="col-md-3">
+          <button class="btn btn-success">Add Product</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row top-space">
+        <div class="card-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Image</th>
+              <th scope="col">Units Per Cartoon</th>
+              <th scope="col">Price Per Cartoon</th>
+              <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of productArray.data; let i = index">
+              <td>{{i + 1}}</td>
+              <td>{{product.name}}</td>
+              <td><img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 120px;" class="img-fluid"
+                       src="{{product.image}}"/></td>
+              <td>{{product.units_per_cartoon}}</td>
+              <td>{{product.price_per_cartoon}}</td>
+              <td>
+                <ul>
+                  <li>If you purchase single units, the price is acquired using the carton price multiplied by an
+                    increase of {{product.unit_discount * 100}}%
+                  </li>
+                  <li>If you purchased {{product.discount_eligibility}} carton or more, you will
+                    receive {{product.cartoon_discount * 100}}% discount off the carton price
+                  </li>
+                </ul>
+                <ul>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <app-snippet-button [isCarton]="true"
+                                          [product]="product"></app-snippet-button>
+                    </div>
+                    <div class="col-sm-6">
+                      <app-snippet-button [isCarton]="false"></app-snippet-button>
+                    </div>
+                  </div>
+                </ul>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row top-space"></div>
+
+    </div>
+    <div class="card-footer"></div>
+
+
+  </div>
 </div>

@@ -1,0 +1,6 @@
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-danger" (click)="dropQty()">-</button>
+  <input *ngIf="isCarton" type="number" class="form-control" [(ngModel)]="amount" placeholder="cartons">
+  <input *ngIf="isCarton == false" type="number" class="form-control" [(ngModel)]="amount" placeholder="units">
+  <button type="button" class="btn btn-success" (click)="addQty()">+</button>
+</div>
