@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {HomeService} from '../../services/home.service';
 
 @Component({
   selector: 'app-snippet-button',
@@ -7,13 +8,17 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SnippetButtonComponent implements OnInit {
 
+  public cartArray: any = [];
+
   amount = 0;
   @Input() isCarton = false;
   @Input() product: any;
 
   currentUnit = 0;
 
-  constructor() {
+  errorMessage = '';
+
+  constructor(public homeService: HomeService) {
   }
 
   ngOnInit(): void {
@@ -21,28 +26,35 @@ export class SnippetButtonComponent implements OnInit {
 
   addQty(): void {
 
-    // if (this.amount === undefined || this.amount === 0) {
-    //   alert('Amount should be greater than 0');
-    //   return;
-    // }
+    let type;
 
-    // if (this.isCarton) {
-    //   alert('cartoon');
-    // } else {
-    //   alert('Not cartoon');
-    // }
+    if (this.isCarton) {
+      type = 'cartoon';
+    } else {
+      type = 'unit';
+    }
 
     this.amount = this.currentUnit += 1;
 
-    // this.getAmount.emit({
-    //   item: this.item,
-    //   amount: this.amount,
-    //   isCarton: this.isCarton,
-    //   action: 'add'
-    // });
+    const data = {
+      user_id: 1,
+      product_id: this.product.id,
+      qty: 1,
+      order_type: type,
+    };
+
+    this.homeService.addToCart(data).subscribe(response => {
+        this.cartArray = response.data;
+        console.log(this.cartArray);
+      },
+      err => {
+        this.errorMessage = err.message;
+      });
+
   }
 
   dropQty(): void {
+
     if (this.amount <= 0) {
       alert('Amount should be greater than 0');
       return;
@@ -50,12 +62,7 @@ export class SnippetButtonComponent implements OnInit {
 
     this.amount = this.currentUnit -= 1;
 
-    // this.getAmount.emit({
-    //   item: this.item,
-    //   amount: this.amount,
-    //   isCarton: this.isCarton,
-    //   action: 'reduce'
-    // });
+
   }
 
 }

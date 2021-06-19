@@ -28,7 +28,7 @@
               <tr *ngFor="let product of productArray.data; let i = index">
                 <td>{{i + 1}}</td>
                 <td>{{product.name}}</td>
-                <td><img style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 120px;" class="img-fluid"
+                <td><img style="border: 1px solid #dddddd; border-radius: 4px; padding: 5px; width: 120px;" class="img-fluid"
                          src="{{product.image}}"/></td>
                 <td>{{product.units_per_cartoon}}</td>
                 <td>{{product.price_per_cartoon}}</td>
@@ -59,8 +59,8 @@
                         Units
                       </div>
                       <div class="col-sm-8">
-                        <app-snippet-button [isCarton]="false">
-
+                        <app-snippet-button [isCarton]="false"
+                                            [product]="product">
                         </app-snippet-button>
                       </div>
                     </div>
@@ -71,7 +71,37 @@
             </table>
           </div>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="card-header">
+            Shopping Cart
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Penguin-ears</td>
+                <td>10</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Horseshoe</td>
+                <td>12</td>
+                <td>130</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <div class="row top-space"></div>
 
