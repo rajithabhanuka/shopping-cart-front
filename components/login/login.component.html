@@ -24,7 +24,7 @@
               <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>
             </div>
             <div class="input-group mb-4">
-              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password"
+              <input value="PPassword@123" type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password"
                      required minlength="6" #password="ngModel"/>
             </div>
 
@@ -45,10 +45,6 @@
         </div>
       </div>
       <div class="col-md-3"></div>
-    </div>
-
-    <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in Successful
     </div>
   </div>
 </div>

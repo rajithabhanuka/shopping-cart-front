@@ -21,6 +21,7 @@ export class AuthService {
 
   }
 
+  // Call to authenticate to validate the user
   login(username: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'authenticate', {
       username,

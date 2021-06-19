@@ -15,20 +15,24 @@ export class TokenStorageService {
     window.sessionStorage.clear();
   }
 
+  // save JWT when successful login
   public saveToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
+  // save user data when successful login
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
+  // get token
   public getToken(): string | null {
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
 
+  // get user
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {

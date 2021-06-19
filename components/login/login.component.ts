@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {TokenStorageService} from '../../services/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,8 @@ import {TokenStorageService} from '../../services/token-storage.service';
 export class LoginComponent implements OnInit {
 
   form: any = {
-    username: null,
-    password: null
+    username: 'rajithabhanuka1@gmail.com',
+    password: 'PPassword@123'
   };
 
   isLoggedIn = false;
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
 
   constructor(private authService: AuthService,
-              private tokenStorage: TokenStorageService) {
+              private tokenStorage: TokenStorageService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -29,16 +31,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+
     const {username, password} = this.form;
 
     this.authService.login(username, password).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveToken(data.jwtToken);
         this.tokenStorage.saveUser(data);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.reloadPage();
+        this.makeSuccessfulLogin();
       },
       err => {
         this.errorMessage = err.error.message;
@@ -49,5 +53,9 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  makeSuccessfulLogin(): void {
+    this.router.navigate(['home']);
   }
 }
