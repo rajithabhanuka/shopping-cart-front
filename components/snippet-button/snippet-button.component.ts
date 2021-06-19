@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {HomeService} from '../../services/home.service';
 
 @Component({
@@ -8,7 +8,7 @@ import {HomeService} from '../../services/home.service';
 })
 export class SnippetButtonComponent implements OnInit {
 
-  public cartArray: any = [];
+  @Output() cartArray: any = [];
 
   amount = 0;
   @Input() isCarton = false;
@@ -60,8 +60,30 @@ export class SnippetButtonComponent implements OnInit {
       return;
     }
 
+    let type;
+
+    if (this.isCarton) {
+      type = 'cartoon';
+    } else {
+      type = 'unit';
+    }
+
     this.amount = this.currentUnit -= 1;
 
+    const data = {
+      user_id: 1,
+      product_id: this.product.id,
+      qty: -1,
+      order_type: type,
+    };
+
+    this.homeService.addToCart(data).subscribe(response => {
+        this.cartArray = response.data;
+        console.log(this.cartArray);
+      },
+      err => {
+        this.errorMessage = err.message;
+      });
 
   }
 

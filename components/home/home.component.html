@@ -81,22 +81,16 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">Qty</th>
+                <th scope="col">Qty (Unit)</th>
                 <th scope="col">Price</th>
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Penguin-ears</td>
-                <td>10</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Horseshoe</td>
-                <td>12</td>
-                <td>130</td>
+              <tr *ngFor="let cart of cartArray.data; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{cart.product_name}}</td>
+                <td>{{cart.qty}}</td>
+                <td>{{cart.price}}</td>
               </tr>
               </tbody>
             </table>

@@ -1,32 +1,49 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {HomeService} from '../../services/home.service';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
-    public productArray: any = [];
-    public start = 0;
-    public size = 10;
+  public cartArray: any = [];
+  public productArray: any = [];
 
-    constructor(private homeService: HomeService) {
-    }
+  public start = 0;
+  public size = 10;
 
-    ngOnInit(): void {
+  errorMessage = '';
 
-        this.getData(this.start, this.size);
+  constructor(private homeService: HomeService) {
+  }
 
-    }
+  ngOnInit(): void {
 
-    getData(page: number, size: number): void {
-        this.homeService.getProducts(page, size).then(value => {
-            value.subscribe((AttributeArray: any) => {
-                this.productArray = AttributeArray;
-            });
-        });
-    }
+    this.getData(this.start, this.size);
+    this.getCart(1);
+
+  }
+
+  getData(page: number, size: number): void {
+    this.homeService.getProducts(page, size).then(value => {
+      value.subscribe((AttributeArray: any) => {
+        this.productArray = AttributeArray;
+      });
+    });
+  }
+
+
+  getCart(userId: number): void {
+    this.homeService.getCart(userId).subscribe(response => {
+        this.cartArray = response;
+        console.log(this.cartArray);
+      },
+      err => {
+        this.errorMessage = err.message;
+      });
+  }
+
 
 }

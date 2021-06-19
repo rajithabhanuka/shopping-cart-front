@@ -29,7 +29,11 @@ export class HomeService {
 
   // Call to authenticate to validate the user
   addToCart(data: any): Observable<any> {
-    return this.http.post(CART_API + 'api/carts', data , httpOptions);
+    return this.http.post(CART_API + 'api/carts', data, httpOptions);
+  }
+
+  getCart(userId: number): Observable<any> {
+    return this.http.get(CART_API + `api/carts?userId=${userId}`, httpOptions);
   }
 
 }
