@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
+// anActivate: [AuthGuard],
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
