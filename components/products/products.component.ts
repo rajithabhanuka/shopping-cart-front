@@ -51,11 +51,12 @@ export class ProductsComponent implements OnInit {
     };
 
     this.productService.save(data).subscribe(response => {
-       this.proceedSuccessTrx('Data Successfully Saved');
-      // alert('Data Successfully Saved');
+        this.proceedSuccessTrx('Data Successfully Saved');
+        this.reset();
+        // alert('Data Successfully Saved');
       },
       err => {
-         this.errorMessageToasterTopCenter(err.error_code, err.message);
+        this.errorMessageToasterTopCenter(err.error_code, err.message);
         // alert('Error While Saving Data');
       });
 
@@ -91,5 +92,15 @@ export class ProductsComponent implements OnInit {
       positionClass: 'toast-top-center',
       timeOut: timeOutMilliSec,
     });
+  }
+
+  reset(): void {
+    this.form.productName = '',
+      this.form.unitsPerCartoon = '',
+      this.form.pricePerCartoon = '',
+      this.form.unitDiscount = '',
+      this.form.cartoonDiscount = '',
+      this.form.discountEligibility = '',
+      this.form.productImage = '';
   }
 }
