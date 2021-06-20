@@ -9,13 +9,15 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import {SnippetButtonComponent} from './components/snippet-button/snippet-button.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SnippetButtonComponent
+    SnippetButtonComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

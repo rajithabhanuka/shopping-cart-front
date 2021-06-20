@@ -10,6 +10,12 @@
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
+        <a href="/products" class="nav-link" routerLink="mod">Add Product</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
         <a href class="nav-link" (click)="logout()">Logout</a>
       </li>
     </ul>
