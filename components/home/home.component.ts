@@ -4,6 +4,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditCartComponent} from '../edit-cart/edit-cart.component';
 import {CartService} from '../../services/cart.service';
 import {ProductsDetailsComponent} from '../products-details/products-details.component';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -21,13 +22,14 @@ export class HomeComponent implements OnInit {
 
   constructor(public homeService: HomeService,
               public cartService: CartService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
 
     this.getData(this.start, this.size);
-    this.getCart(1);
+    this.getCart(this.tokenStorageService.getUser().id);
 
   }
 

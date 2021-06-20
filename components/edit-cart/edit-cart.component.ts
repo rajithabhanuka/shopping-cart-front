@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CartService} from '../../services/cart.service';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-edit-cart',
@@ -21,7 +22,8 @@ export class EditCartComponent implements OnInit {
   errorMessage = '';
 
   constructor(public cartService: CartService,
-              public activeModal: NgbActiveModal) {
+              public activeModal: NgbActiveModal,
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +36,7 @@ export class EditCartComponent implements OnInit {
     const data = {
 
       id: this.form.id,
-      user_id: 1,
+      user_id: this.tokenStorageService.getUser().id,
       product_id: this.form.product_id,
       qty: finalQty,
       order_type: 'unit',

@@ -12,7 +12,7 @@
             <div class="form-group mb-4">
               <label for="productName">Name <span class="text-danger">*</span></label>
               <input type="text" class="form-control" id="productName" name="productName" [(ngModel)]="form.productName"
-                     required #productName="ngModel"/>
+                     required #productName="ngModel" placeHolder="Item name eg: Penguin-ears"/>
               <div class="text-danger" *ngIf="productName.errors && f.submitted && !isReset">
                 Name is required!
               </div>
@@ -21,7 +21,7 @@
             <div class="form-group mb-4">
               <label for="unitsPerCartoon">Units Per Cartoon<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="unitsPerCartoon" name="unitsPerCartoon" [(ngModel)]="form.unitsPerCartoon"
-                     required #unitsPerCartoon="ngModel"/>
+                     required #unitsPerCartoon="ngModel" placeHolder="Units Per Cartoon eg: 20"/>
               <div class="text-danger" *ngIf="unitsPerCartoon.errors && f.submitted && !isReset">
                 Units Per Cartoon is required!
               </div>
@@ -30,7 +30,7 @@
             <div class="form-group mb-4">
               <label for="pricePerCartoon">Price Per Cartoon<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="pricePerCartoon" name="pricePerCartoon" [(ngModel)]="form.pricePerCartoon"
-                     required #pricePerCartoon="ngModel"/>
+                     required #pricePerCartoon="ngModel" placeHolder="Carton Price eg: 175"/>
               <div class="text-danger" *ngIf="pricePerCartoon.errors && f.submitted && !isReset">
                 Price Per Cartoon is required!
               </div>
@@ -39,7 +39,7 @@
             <div class="form-group mb-4">
               <label for="unitDiscount">Discount for Single Unit<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="unitDiscount" name="unitDiscount" [(ngModel)]="form.unitDiscount"
-                     required #unitDiscount="ngModel"/>
+                     required #unitDiscount="ngModel" placeHolder="Discount that Apply Single Item Purchase eg: 0.3"/>
               <div class="text-danger" *ngIf="unitDiscount.errors && f.submitted && !isReset">
                 Unit Discount is required!
               </div>
@@ -48,7 +48,7 @@
             <div class="form-group mb-4">
               <label for="cartoonDiscount">Cartoon Discount<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="cartoonDiscount" name="cartoonDiscount" [(ngModel)]="form.cartoonDiscount"
-                     required #cartoonDiscount="ngModel"/>
+                     required #cartoonDiscount="ngModel" placeHolder="Cartoon Discount eg: 0.1"/>
               <div class="text-danger" *ngIf="cartoonDiscount.errors && f.submitted && !isReset">
                 Cartoon Discount is required!
               </div>
@@ -57,7 +57,7 @@
             <div class="form-group mb-4">
               <label for="discountEligibility">Discount Eligibility<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="discountEligibility" name="discountEligibility" [(ngModel)]="form.discountEligibility"
-                     required #discountEligibility="ngModel"/>
+                     required #discountEligibility="ngModel" placeHolder="Minimum Cartoon Amount to be Applied Discount eg: 3"/>
               <div class="text-danger" *ngIf="discountEligibility.errors && f.submitted && !isReset">
                 Discount Eligibility is required!
               </div>
@@ -66,7 +66,7 @@
             <div class="form-group mb-4">
               <label for="productImage">Image</label>
               <input type="text" class="form-control" id="productImage" name="productImage" [(ngModel)]="form.productImage"
-                     #productImage="ngModel"/>
+                     #productImage="ngModel" placeHolder="Image Location eg:- https://www.pngkey.com/png/full/35-353179_image-ears-png-club-penguin-wiki-fandom-logotipo.png"/>
             </div>
 
             <div class="input-group mb-4">

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {HomeService} from '../../services/home.service';
 import {CartService} from '../../services/cart.service';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-snippet-button',
@@ -17,7 +18,8 @@ export class SnippetButtonComponent implements OnInit {
 
   errorMessage = '';
 
-  constructor(public cartService: CartService) {
+  constructor(public cartService: CartService,
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class SnippetButtonComponent implements OnInit {
     this.amount = this.currentUnit += 1;
 
     const data = {
-      user_id: 1,
+      user_id: this.tokenStorageService.getUser().id,
       product_id: this.product.id,
       qty: 1,
       order_type: type,
@@ -69,7 +71,7 @@ export class SnippetButtonComponent implements OnInit {
     this.amount = this.currentUnit -= 1;
 
     const data = {
-      user_id: 1,
+      user_id: this.tokenStorageService.getUser().id,
       product_id: this.product.id,
       qty: -1,
       order_type: type,
