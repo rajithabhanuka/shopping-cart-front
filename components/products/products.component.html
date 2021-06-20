@@ -13,7 +13,7 @@
               <label for="productName">Name <span class="text-danger">*</span></label>
               <input type="text" class="form-control" id="productName" name="productName" [(ngModel)]="form.productName"
                      required #productName="ngModel"/>
-              <div class="text-danger" *ngIf="productName.errors && f.submitted">
+              <div class="text-danger" *ngIf="productName.errors && f.submitted && !isReset">
                 Name is required!
               </div>
             </div>
@@ -22,7 +22,7 @@
               <label for="unitsPerCartoon">Units Per Cartoon<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="unitsPerCartoon" name="unitsPerCartoon" [(ngModel)]="form.unitsPerCartoon"
                      required #unitsPerCartoon="ngModel"/>
-              <div class="text-danger" *ngIf="unitsPerCartoon.errors && f.submitted">
+              <div class="text-danger" *ngIf="unitsPerCartoon.errors && f.submitted && !isReset">
                 Units Per Cartoon is required!
               </div>
             </div>
@@ -31,7 +31,7 @@
               <label for="pricePerCartoon">Price Per Cartoon<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="pricePerCartoon" name="pricePerCartoon" [(ngModel)]="form.pricePerCartoon"
                      required #pricePerCartoon="ngModel"/>
-              <div class="text-danger" *ngIf="pricePerCartoon.errors && f.submitted">
+              <div class="text-danger" *ngIf="pricePerCartoon.errors && f.submitted && !isReset">
                 Price Per Cartoon is required!
               </div>
             </div>
@@ -40,7 +40,7 @@
               <label for="unitDiscount">Discount for Single Unit<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="unitDiscount" name="unitDiscount" [(ngModel)]="form.unitDiscount"
                      required #unitDiscount="ngModel"/>
-              <div class="text-danger" *ngIf="unitDiscount.errors && f.submitted">
+              <div class="text-danger" *ngIf="unitDiscount.errors && f.submitted && !isReset">
                 Unit Discount is required!
               </div>
             </div>
@@ -49,7 +49,7 @@
               <label for="cartoonDiscount">Cartoon Discount<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="cartoonDiscount" name="cartoonDiscount" [(ngModel)]="form.cartoonDiscount"
                      required #cartoonDiscount="ngModel"/>
-              <div class="text-danger" *ngIf="cartoonDiscount.errors && f.submitted">
+              <div class="text-danger" *ngIf="cartoonDiscount.errors && f.submitted && !isReset">
                 Cartoon Discount is required!
               </div>
             </div>
@@ -58,7 +58,7 @@
               <label for="discountEligibility">Discount Eligibility<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="discountEligibility" name="discountEligibility" [(ngModel)]="form.discountEligibility"
                      required #discountEligibility="ngModel"/>
-              <div class="text-danger" *ngIf="discountEligibility.errors && f.submitted">
+              <div class="text-danger" *ngIf="discountEligibility.errors && f.submitted && !isReset">
                 Discount Eligibility is required!
               </div>
             </div>
@@ -70,10 +70,10 @@
             </div>
 
             <div class="input-group mb-4">
-              <button class="btn btn-primary btn-block">
+              <button type="submit" class="btn btn-primary btn-block">
                 Save
               </button>
-              <button class="btn btn-danger btn-block" (click)="reset()">
+              <button type="button" class="btn btn-danger btn-block" (click)="reset()">
                 Reset
               </button>
             </div>

@@ -9,6 +9,8 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ProductsComponent implements OnInit {
 
+  isReset = false;
+
   form: any = {
     productName: '',
     unitsPerCartoon: '',
@@ -95,7 +97,8 @@ export class ProductsComponent implements OnInit {
   }
 
   reset(): void {
-    this.form.productName = '',
+      this.isReset = true;
+      this.form.productName = '',
       this.form.unitsPerCartoon = '',
       this.form.pricePerCartoon = '',
       this.form.unitDiscount = '',
