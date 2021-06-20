@@ -2,19 +2,13 @@
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a href="#" class="navbar-brand">99X Shopping Cart Assignment</a>
 
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+    <ul class="navbar-nav ml-auto" *ngIf="loginService.isLoggedIn">
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <a class="nav-link" routerLink="/products">Add Product</a>
       </li>
     </ul>
 
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/products" class="nav-link" routerLink="mod">Add Product</a>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+    <ul class="navbar-nav ml-auto" *ngIf="loginService.isLoggedIn">
       <li class="nav-item">
         <a href class="nav-link" (click)="logout()">Logout</a>
       </li>

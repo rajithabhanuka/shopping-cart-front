@@ -15,18 +15,16 @@ export class LoginComponent implements OnInit {
     password: 'PPassword@123'
   };
 
-  isLoggedIn = false;
-  isLoginFailed = false;
   errorMessage = '';
 
-  constructor(private authService: LoginService,
+  constructor(public loginService: LoginService,
               private tokenStorage: TokenStorageService,
               private router: Router) {
   }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
+      this.loginService.isLoggedIn = true;
     }
   }
 
@@ -34,25 +32,18 @@ export class LoginComponent implements OnInit {
 
     const {username, password} = this.form;
 
-    this.authService.login(username, password).subscribe(
+    this.loginService.login(username, password).subscribe(
       data => {
         this.tokenStorage.saveToken(data.jwtToken);
-        this.tokenStorage.saveUser(data);
+        this.tokenStorage.saveUser(data.user);
 
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.reloadPage();
+        this.loginService.isLoggedIn = true;
         this.makeSuccessfulLogin();
       },
       err => {
         this.errorMessage = err.message;
-        this.isLoginFailed = true;
       }
     );
-  }
-
-  reloadPage(): void {
-    window.location.reload();
   }
 
   makeSuccessfulLogin(): void {

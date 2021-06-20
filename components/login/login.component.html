@@ -5,7 +5,7 @@
       <div class="col-md-6">
         <div class="card-body">
           <form
-            *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+            *ngIf="! loginService.isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
             novalidate
           >
             <h1>Login</h1>
@@ -37,7 +37,7 @@
               <div
                 class="alert alert-danger"
                 role="alert"
-                *ngIf="f.submitted && isLoginFailed">
+                *ngIf="f.submitted && loginService.isLoggedIn">
                 Login failed: {{ errorMessage }}
               </div>
             </div>

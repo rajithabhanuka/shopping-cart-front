@@ -17,6 +17,8 @@ const httpOptions = {
 })
 export class LoginService {
 
+  isLoggedIn = false;
+
   constructor(private http: HttpClient) {
 
   }
