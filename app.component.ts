@@ -9,10 +9,6 @@ import {LoginService} from './services/login.service';
 })
 export class AppComponent implements OnInit{
 
-  title = 'shopping-cart-front';
-
-  username?: string;
-
   constructor(private tokenStorageService: TokenStorageService,
               public loginService: LoginService) { }
 
