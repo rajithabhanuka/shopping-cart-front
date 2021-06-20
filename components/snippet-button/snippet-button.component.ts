@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {HomeService} from '../../services/home.service';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-snippet-button',
@@ -16,7 +17,7 @@ export class SnippetButtonComponent implements OnInit {
 
   errorMessage = '';
 
-  constructor(public homeService: HomeService) {
+  constructor(public cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -41,8 +42,8 @@ export class SnippetButtonComponent implements OnInit {
       order_type: type,
     };
 
-    this.homeService.addToCart(data).subscribe(response => {
-        this.homeService.cartArray = response;
+    this.cartService.addToCart(data).subscribe(response => {
+        this.cartService.cartArray = response;
       },
       err => {
         this.errorMessage = err.message;
@@ -74,8 +75,8 @@ export class SnippetButtonComponent implements OnInit {
       order_type: type,
     };
 
-    this.homeService.addToCart(data).subscribe(response => {
-        this.homeService.cartArray = response;
+    this.cartService.addToCart(data).subscribe(response => {
+        this.cartService.cartArray = response;
       },
       err => {
         this.errorMessage = err.message;

@@ -81,7 +81,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let cart of homeService.cartArray.data; let i = index">
+              <tr *ngFor="let cart of cartService.cartArray.data; let i = index">
                 <td>{{i + 1}}</td>
                 <td>{{cart.product_name}}</td>
                 <td>{{cart.qty}}</td>

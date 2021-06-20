@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import {EditCartComponent, HomeComponent} from './components/home/home.component';
+import {HomeComponent} from './components/home/home.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
@@ -12,6 +12,7 @@ import {SnippetButtonComponent} from './components/snippet-button/snippet-button
 import { ProductsComponent } from './components/products/products.component';
 import {ToastrModule} from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditCartComponent } from './components/edit-cart/edit-cart.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     SnippetButtonComponent,
     ProductsComponent,
+    EditCartComponent,
     EditCartComponent
   ],
   imports: [

@@ -24,4 +24,6 @@ export class ProductsService {
   save(data: any): Observable<any> {
     return this.http.post(BASE_API + 'api/products', data, httpOptions);
   }
+
+
 }

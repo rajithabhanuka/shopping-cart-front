@@ -6,9 +6,10 @@
           <label for="qty">Quantity<span class="text-danger">*</span></label>
           <input type="number" value="{{qty}}" class="form-control" id="qty" name="qty" [(ngModel)]="form.qty"
                  required #qty="ngModel"/>
-          <div class="text-danger" *ngIf="qty.errors && f.submitted">
-            Quantity is required!
-          </div>
+          <input type="hidden" value="{{product_id}}" class="form-control" id="product_id" name="product_id" [(ngModel)]="form.product_id"
+                 #product_id="ngModel"/>
+          <input type="hidden" value="{{id}}" class="form-control" id="id" name="id" [(ngModel)]="form.id"
+                 #id="ngModel"/>
         </div>
         <div class="input-group mb-4">
           <button class="btn btn-success">
