@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import {LoginService} from '../../services/login.service';
 import {TokenStorageService} from '../../services/token-storage.service';
 import {Router} from '@angular/router';
 
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService,
+  constructor(private authService: LoginService,
               private tokenStorage: TokenStorageService,
               private router: Router) {
   }
