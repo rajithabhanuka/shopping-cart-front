@@ -23,7 +23,7 @@
               <tr *ngFor="let product of productArray.data; let i = index">
                 <td>{{i + 1}}</td>
                 <td>{{product.name}}</td>
-                <td><img style="border: 1px solid #dddddd; border-radius: 4px; padding: 5px; width: 120px;" class="img-fluid"
+                <td><img alt="image" style="border: 1px solid #dddddd; border-radius: 4px; padding: 5px; width: 120px;" class="img-fluid"
                          src="{{product.image}}"/></td>
                 <td>{{product.units_per_cartoon}}</td>
                 <td>{{product.price_per_cartoon}}</td>
@@ -81,7 +81,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let cart of cartArray.data; let i = index">
+              <tr *ngFor="let cart of homeService.cartArray.data; let i = index">
                 <td>{{i + 1}}</td>
                 <td>{{cart.product_name}}</td>
                 <td>{{cart.qty}}</td>

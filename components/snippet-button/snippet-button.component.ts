@@ -8,8 +8,6 @@ import {HomeService} from '../../services/home.service';
 })
 export class SnippetButtonComponent implements OnInit {
 
-  @Output() cartArray: any = [];
-
   amount = 0;
   @Input() isCarton = false;
   @Input() product: any;
@@ -44,8 +42,7 @@ export class SnippetButtonComponent implements OnInit {
     };
 
     this.homeService.addToCart(data).subscribe(response => {
-        this.cartArray = response.data;
-        console.log(this.cartArray);
+        this.homeService.cartArray = response;
       },
       err => {
         this.errorMessage = err.message;
@@ -78,8 +75,7 @@ export class SnippetButtonComponent implements OnInit {
     };
 
     this.homeService.addToCart(data).subscribe(response => {
-        this.cartArray = response.data;
-        console.log(this.cartArray);
+        this.homeService.cartArray = response;
       },
       err => {
         this.errorMessage = err.message;

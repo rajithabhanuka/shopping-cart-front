@@ -17,6 +17,8 @@ const httpOptions = {
 })
 export class HomeService {
 
+  public cartArray: any = [];
+
   constructor(private http: HttpClient) {
   }
 

@@ -8,7 +8,6 @@ import {HomeService} from '../../services/home.service';
 })
 export class HomeComponent implements OnInit {
 
-  public cartArray: any = [];
   public productArray: any = [];
 
   public start = 0;
@@ -16,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   errorMessage = '';
 
-  constructor(private homeService: HomeService) {
+  constructor(public homeService: HomeService) {
   }
 
   ngOnInit(): void {
@@ -37,8 +36,7 @@ export class HomeComponent implements OnInit {
 
   getCart(userId: number): void {
     this.homeService.getCart(userId).subscribe(response => {
-        this.cartArray = response;
-        console.log(this.cartArray);
+        this.homeService.cartArray = response;
       },
       err => {
         this.errorMessage = err.message;
