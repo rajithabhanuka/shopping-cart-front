@@ -3,8 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 
-const PRODUCT_API = environment.baseUrl;
-const CART_API = environment.baseUrl;
+const BASE_API = environment.baseUrl;
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,17 +22,17 @@ export class HomeService {
 
 
   async getProducts(page: number, size: number): Promise<any> {
-    const api = PRODUCT_API + `api/products?page=${page}&size=${size}`;
+    const api = BASE_API + `api/products?page=${page}&size=${size}`;
     return this.http.get(api, httpOptions);
   }
 
   // Call to authenticate to validate the user
   addToCart(data: any): Observable<any> {
-    return this.http.post(CART_API + 'api/carts', data, httpOptions);
+    return this.http.post(BASE_API + 'api/carts', data, httpOptions);
   }
 
   getCart(userId: number): Observable<any> {
-    return this.http.get(CART_API + `api/carts?userId=${userId}`, httpOptions);
+    return this.http.get(BASE_API + `api/carts?userId=${userId}`, httpOptions);
   }
 
 }

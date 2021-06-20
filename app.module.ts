@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import {SnippetButtonComponent} from './components/snippet-button/snippet-button.component';
 import { ProductsComponent } from './components/products/products.component';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,11 @@ import { ProductsComponent } from './components/products/products.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-top-center'
+    })
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
