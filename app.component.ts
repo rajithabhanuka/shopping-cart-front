@@ -18,11 +18,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.loginService.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    if (this.loginService.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.username = user.username;
-    }
   }
 
   logout(): void {
