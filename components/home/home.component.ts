@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
   edit(cart: any): void {
     const modalRef = this.modalService.open(EditCartComponent, {size: 'sm'});
     modalRef.componentInstance.form.qty = cart.qty;
+    modalRef.componentInstance.previousQty = cart.qty;
     modalRef.componentInstance.form.product_id = cart.product_id;
     modalRef.componentInstance.form.id = cart.id;
   }

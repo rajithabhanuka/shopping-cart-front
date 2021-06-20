@@ -9,6 +9,8 @@ import {CartService} from '../../services/cart.service';
 })
 export class EditCartComponent implements OnInit {
 
+  public previousQty = 0;
+
   form: any = {
     qty: '',
     product_id: '',
@@ -25,12 +27,14 @@ export class EditCartComponent implements OnInit {
 
   onSubmit(): void {
 
+    const finalQty = (this.form.qty - this.previousQty);
+
     const data = {
 
       id: this.form.id,
       user_id: 1,
       product_id: this.form.product_id,
-      qty: this.form.qty,
+      qty: finalQty,
       order_type: 'unit',
 
     };
