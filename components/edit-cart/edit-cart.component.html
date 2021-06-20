@@ -1,6 +1,9 @@
 <div class="modal-sm">
   <div class="card">
     <div class="card-header">
+      Update Cart
+    </div>
+    <div class="card-body">
       <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group mb-4">
           <label for="qty">Quantity<span class="text-danger">*</span></label>
@@ -12,11 +15,20 @@
                  #id="ngModel"/>
         </div>
         <div class="input-group mb-4">
-          <button class="btn btn-success">
+          <button class="btn btn-primary">
             Update
+          </button>
+
+          <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">
+            Close
           </button>
         </div>
       </form>
+    </div>
+    <div class="card-footer">
+      <div class="modal-footer">
+
+      </div>
     </div>
   </div>
 </div>

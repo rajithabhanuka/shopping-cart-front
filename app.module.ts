@@ -13,6 +13,7 @@ import { ProductsComponent } from './components/products/products.component';
 import {ToastrModule} from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditCartComponent } from './components/edit-cart/edit-cart.component';
+import { ProductsDetailsComponent } from './components/products-details/products-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditCartComponent } from './components/edit-cart/edit-cart.component';
     SnippetButtonComponent,
     ProductsComponent,
     EditCartComponent,
-    EditCartComponent
+    EditCartComponent,
+    ProductsDetailsComponent
   ],
   imports: [
     BrowserModule,

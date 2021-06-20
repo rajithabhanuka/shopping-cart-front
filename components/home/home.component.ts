@@ -3,6 +3,7 @@ import {HomeService} from '../../services/home.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditCartComponent} from '../edit-cart/edit-cart.component';
 import {CartService} from '../../services/cart.service';
+import {ProductsDetailsComponent} from '../products-details/products-details.component';
 
 @Component({
   selector: 'app-home',
@@ -46,6 +47,11 @@ export class HomeComponent implements OnInit {
       err => {
         this.errorMessage = err.message;
       });
+  }
+
+  more(product: any): void {
+    const modalRef = this.modalService.open(ProductsDetailsComponent, {size: 'sm'});
+    modalRef.componentInstance.product = product;
   }
 
   edit(cart: any): void {

@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CartService} from '../../services/cart.service';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-cart',
@@ -19,7 +20,8 @@ export class EditCartComponent implements OnInit {
 
   errorMessage = '';
 
-  constructor(public cartService: CartService) {
+  constructor(public cartService: CartService,
+              public activeModal: NgbActiveModal) {
   }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class EditCartComponent implements OnInit {
 
     this.cartService.addToCart(data).subscribe(response => {
         this.cartService.cartArray = response;
+        this.activeModal.close('Close click');
       },
       err => {
         this.errorMessage = err.message;
