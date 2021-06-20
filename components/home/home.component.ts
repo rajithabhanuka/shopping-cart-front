@@ -1,5 +1,27 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {HomeService} from '../../services/home.service';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
+@Component({
+  selector: 'app-edit-cart',
+  templateUrl: './edit-cart.html',
+  encapsulation: ViewEncapsulation.None,
+  styles: []
+})
+
+export class EditCartComponent {
+
+  form: any = {
+    qty: ''
+  };
+
+  constructor(private activeModal: NgbActiveModal) {
+  }
+
+  onSubmit(): void{
+
+  }
+}
 
 @Component({
   selector: 'app-home',
@@ -15,7 +37,8 @@ export class HomeComponent implements OnInit {
 
   errorMessage = '';
 
-  constructor(public homeService: HomeService) {
+  constructor(public homeService: HomeService,
+              private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -43,5 +66,13 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  edit(cart: any): void {
+    const modalRef = this.modalService.open(EditCartComponent, {size: 'sm'});
+    modalRef.componentInstance.form.qty = cart.qty;
+  }
+
+  remove(): void {
+
+  }
 
 }
