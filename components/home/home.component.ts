@@ -64,8 +64,13 @@ export class HomeComponent implements OnInit {
     modalRef.componentInstance.form.id = cart.id;
   }
 
-  remove(): void {
-
+  remove(cart: any): void {
+    this.cartService.deleteCartItem(this.tokenStorageService.getUser().id, cart.id).subscribe(response => {
+        this.cartService.cartArray = response;
+      },
+      err => {
+        this.errorMessage = err.message;
+      });
   }
 
 }
