@@ -53,13 +53,13 @@ export class ProductsComponent implements OnInit {
     };
 
     this.productService.save(data).subscribe(response => {
-        this.proceedSuccessTrx('Data Successfully Saved');
+        // this.proceedSuccessTrx('Data Successfully Saved');
+        alert('Data Successfully Saved');
         this.reset();
-        // alert('Data Successfully Saved');
       },
       err => {
-        this.errorMessageToasterTopCenter(err.error_code, err.message);
-        // alert('Error While Saving Data');
+        // this.errorMessageToasterTopCenter(err.error_code, err.message);
+        alert('Error While Saving Data');
       });
 
   }
@@ -97,8 +97,8 @@ export class ProductsComponent implements OnInit {
   }
 
   reset(): void {
-      this.isReset = true;
-      this.form.productName = '',
+    this.isReset = true;
+    this.form.productName = '',
       this.form.unitsPerCartoon = '',
       this.form.pricePerCartoon = '',
       this.form.unitDiscount = '',

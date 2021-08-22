@@ -49,6 +49,7 @@ export class SnippetButtonComponent implements OnInit {
       },
       err => {
         this.errorMessage = err.message;
+        alert(this.errorMessage);
       });
 
   }
@@ -82,6 +83,7 @@ export class SnippetButtonComponent implements OnInit {
       },
       err => {
         this.errorMessage = err.message;
+        alert(this.errorMessage);
       });
 
   }

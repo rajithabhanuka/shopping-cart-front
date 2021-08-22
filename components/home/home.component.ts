@@ -67,9 +67,11 @@ export class HomeComponent implements OnInit {
   remove(cart: any): void {
     this.cartService.deleteCartItem(this.tokenStorageService.getUser().id, cart.id).subscribe(response => {
         this.cartService.cartArray = response;
+        alert('Successfully removed');
       },
       err => {
         this.errorMessage = err.message;
+        alert(this.errorMessage);
       });
   }
 

@@ -32,7 +32,7 @@ export class CartService {
   }
 
   deleteCartItem(userId: number, cartId: number): Observable<any> {
-    return this.http.delete(BASE_API + `api/carts/${userId}/${cartId}`, httpOptions);
+    return this.http.delete(BASE_API + `api/carts/${cartId}/users/${userId}`, httpOptions);
   }
 
 }
